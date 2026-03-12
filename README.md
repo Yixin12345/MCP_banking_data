@@ -38,6 +38,32 @@ Use `mcp.json` with your real Render URL:
 }
 ```
 
+### 5. Add MCP auth (Bearer token)
+
+Set an environment variable on your server:
+
+- `MCP_AUTH_TOKEN=<strong-random-secret>`
+
+When `MCP_AUTH_TOKEN` is set, requests to `/mcp` and `/mcp/` must include:
+
+- `Authorization: Bearer <strong-random-secret>`
+
+Example client config:
+
+```json
+{
+  "servers": {
+    "new_api_mcp": {
+      "url": "https://<your-service-name>.onrender.com/mcp/",
+      "type": "http",
+      "headers": {
+        "Authorization": "Bearer <strong-random-secret>"
+      }
+    }
+  }
+}
+```
+
 ## Purpose
 
 The project is intended to provide:

@@ -1,7 +1,11 @@
 {
   "servers": {
     "new_api_mcp": {
-      "url": "https://YOUR-RENDER-SERVICE.onrender.com/mcp/"
+      "url": "https://YOUR-RENDER-SERVICE.onrender.com/mcp/",
+      "type": "http",
+      "headers": {
+        "Authorization": "Bearer REPLACE_WITH_MCP_AUTH_TOKEN"
+      }
     }
   }
 }
