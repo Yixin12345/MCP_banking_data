@@ -1,0 +1,7 @@
+{
+  "servers": {
+    "new_api_mcp": {
+      "url": "https://YOUR-RENDER-SERVICE.onrender.com/mcp/"
+    }
+  }
+}

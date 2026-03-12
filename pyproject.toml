@@ -1,0 +1,14 @@
+[project]
+name = "new-api-mcp"
+version = "0.1.0"
+description = "Create an new MCP Server for hosting APIs"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.135.1",
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.26.0",
+    "pydantic>=2.12.5",
+    "pydantic-settings>=2.11.0",
+    "uvicorn>=0.38.0",
+]

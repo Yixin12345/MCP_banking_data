@@ -1,0 +1,63 @@
+# new_api_mcp
+
+`new_api_mcp` is being established as an **MCP server layer** that exposes selected API capabilities as safe, structured tools for AI clients.
+
+## Deploy On Render (Streamable MCP)
+
+This repository is ready to deploy as one public web service that exposes:
+
+- MCP endpoint: `/mcp/`
+- FastAPI health/API endpoints: `/health`, `/api/v1/...`
+
+### 1. Push to GitHub
+
+Push this project to a GitHub repository.
+
+### 2. Create the Render service
+
+1. In Render, choose **New +** -> **Blueprint**.
+2. Select your GitHub repo.
+3. Render will detect `render.yaml` and create the service.
+
+### 3. Confirm deployment
+
+- Health: `https://<your-service-name>.onrender.com/health`
+- MCP: `https://<your-service-name>.onrender.com/mcp/`
+
+### 4. MCP client config
+
+Use `mcp.json` with your real Render URL:
+
+```json
+{
+  "servers": {
+    "new_api_mcp": {
+      "url": "https://<your-service-name>.onrender.com/mcp/"
+    }
+  }
+}
+```
+
+## Purpose
+
+The project is intended to provide:
+
+- A clear MCP interface over existing/new APIs
+- Strong input/output validation
+- Reliable error handling and observability
+- A foundation for secure, scalable tool execution
+
+## What this project is establishing
+
+1. **MCP-first architecture** for tool-based integrations  
+2. **Reusable API adapters** that can be mapped to tools/resources  
+3. **Operational standards** (logging, retries, timeout strategy, auth handling)  
+4. **Documentation and conventions** for contributors
+
+## Scope (Phase 1)
+
+- [ ] Project scaffold and configuration
+- [ ] MCP server bootstrap
+- [ ] First set of API-backed tools
+- [ ] Centralized config/env management
+- [ ] Developer documentation
