@@ -87,3 +87,27 @@ The project is intended to provide:
 - [ ] First set of API-backed tools
 - [ ] Centralized config/env management
 - [ ] Developer documentation
+
+## Automation tool: Maven tests
+
+The MCP server now exposes a tool named `run_automation_maven_tests` that runs the Maven-based suite in `automation_mvn_tests`.
+
+Tool parameters:
+
+- `maven_goal`: `test` or `verify` (default `test`)
+- `clean_first`: run `clean` before the goal (default `false`)
+- `testng_suite`: relative suite path (default `src/test/resources/testng.xml`)
+- `cucumber_tags`: optional tag filter (example: `@login`)
+- `timeout_seconds`: run timeout in seconds
+- `max_output_chars`: max stdout/stderr returned
+
+Example Copilot prompts:
+
+- "Use `new_api_mcp` and run `run_automation_maven_tests` with defaults."
+- "Use `new_api_mcp` and run `run_automation_maven_tests` with `clean_first=true` and `cucumber_tags=@login`."
+
+Runtime prerequisites on the MCP server host:
+
+- Java (matching the project target, currently 21)
+- Maven (`mvn`) or Maven Wrapper (`mvnw`) available
+- Browser + WebDriver needed by Selenium tests (Chrome/Chromedriver for current step definitions)
