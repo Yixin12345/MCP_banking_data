@@ -14,6 +14,7 @@ from starlette.routing import Mount
 
 from fastapi_app.app import app as fastapi_app
 from main import mcp
+from observability import telemetry
 
 # Mounted at /mcp, so MCP endpoint should be the mount root.
 mcp.settings.streamable_http_path = "/"
@@ -38,7 +39,10 @@ class MCPAuthMiddleware(BaseHTTPMiddleware):
 @asynccontextmanager
 async def lifespan(_: Starlette):
     async with mcp.session_manager.run():
-        yield
+        try:
+            yield
+        finally:
+            telemetry.shutdown()
 
 
 async def redirect_mcp(_):

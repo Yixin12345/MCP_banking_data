@@ -64,6 +64,30 @@ Example client config:
 }
 ```
 
+## Langfuse observability
+
+This MCP server can emit tool-call telemetry to Langfuse.
+
+Set these environment variables:
+
+- `LANGFUSE_ENABLED=true`
+- `LANGFUSE_PUBLIC_KEY=<your-langfuse-public-key>`
+- `LANGFUSE_SECRET_KEY=<your-langfuse-secret-key>`
+- `LANGFUSE_HOST=https://cloud.langfuse.com` (optional, for self-host set your base URL)
+- `LANGFUSE_BASE_URL=https://cloud.langfuse.com` (supported alias for `LANGFUSE_HOST`)
+
+What is tracked:
+
+- MCP tool name
+- Tool input (with sensitive keys like `ssn`, `token`, `authorization` redacted)
+- Tool result/error
+- Execution duration
+
+Note:
+
+- This adds telemetry for your MCP server execution.
+- Token usage appears only if downstream LLM calls include usage data and you log/forward it.
+
 ## Purpose
 
 The project is intended to provide:
